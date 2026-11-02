@@ -1,0 +1,54 @@
+/* ==========================================================
+   LOST PAGE STYLES (lost.html) — loaded AFTER style.css.
+
+   FIND IT FAST:
+   1. .page-hero ....... photo behind the title
+   2. .panel ........... coral top line on the form
+   3. .side-panel__link  link inside the tips box
+   4. .report-card ..... Lost report cards drawn by lost.js
+   Colors, fonts, shadows use the values listed in style.css section 1.
+   ========================================================== */
+
+
+/* 1. HERO photo */
+.page-hero {
+  background-image: url("images/community-lost.jpg");
+}
+
+
+/* 2. FORM PANEL — coral line = "lost" color */
+.panel {
+  border-top: 5px solid #ff7a59;
+}
+
+
+/* 3. TIPS BOX */
+.side-panel__link {
+  display: inline-block;
+  margin-top: 14px;
+  color: #e9603d;
+  font-weight: 700;
+}
+
+.side-panel__link:hover {
+  color: #0f3d3e;
+}
+
+
+/* 4. REPORT CARDS */
+.report-card .card__art {
+  height: 170px;
+}
+
+.report-card__details {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #e4ebe6;
+  color: #54666a;
+  font-size: 13px;
+}
+
+.report-card .btn {
+  align-self: flex-start;
+  margin-top: 6px;
+}

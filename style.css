@@ -1,0 +1,1193 @@
+/* ============================================================
+   LOOPIN — SHARED STYLES (loaded on every page, FIRST)
+   ============================================================
+
+   FIND IT FAST  (Ctrl+F the number or the class name)
+   ------------------------------------------------------------
+   1. DESIGN VALUES .. reference list of colors, fonts, radius, shadows
+   2. BASE ............ body, links, images, headings
+   3. NAVBAR .......... .navbar
+   4. BUTTONS ......... .btn
+   5. PAGE HERO + STEPS  .page-hero  .steps
+   6. PANELS + FORMS .. .panel  .form-field  .choice
+   7. CARDS ........... .card  .card-grid  .card__art--category colors
+   8. SECTIONS + LISTS  .section  .request-row  .empty-message
+   9. FOOTER .......... .footer
+   10. TOAST .......... .toast
+   11. ANIMATIONS ..... @keyframes fade-up
+   12. RESPONSIVE ..... Ctrl+F "RESPONSIVE"
+
+   Naming = BEM:  block__element--modifier
+   Example: .navbar__link--current  (navbar block, link element, current modifier)
+   ============================================================ */
+
+
+/* ============================================================
+   1. DESIGN VALUES (a reference list, nothing here is code)
+   Every color, font, radius and shadow is written directly inside the rules
+   below. To change one, use Find and Replace (Ctrl+H) in ALL .css files.
+   ------------------------------------------------------------
+   teal          #0f3d3e
+   teal-dark     #082a2b
+   teal-soft     #e6f1ec
+   coral         #ff7a59
+   coral-dark    #e9603d
+   gold          #f2c14e
+   mint          #bfe5d3
+   peach         #fbdccd
+   cream         #fbf7f0
+   white         #ffffff
+   ink           #1b2a2c
+   text          #54666a
+   line          #e4ebe6
+   line-strong   #cddbd3
+   font-heading  "Playfair Display", Georgia, serif
+   font-body     "Inter", Arial, sans-serif
+   radius-sm     12px
+   radius-md     18px
+   radius-lg     28px
+   radius-pill   999px
+   shadow-sm     0 4px 14px rgba(15, 61, 62, 0.08)
+   shadow-md     0 14px 34px rgba(15, 61, 62, 0.1)
+   shadow-lg     0 26px 54px rgba(15, 61, 62, 0.18)
+   ============================================================ */
+
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #fbf7f0;
+  color: #1b2a2c;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: #0f3d3e;
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.15;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Keeps page content centered and not too wide. */
+.container {
+  width: 90%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Small coral title above a big heading. */
+.section-label {
+  margin-bottom: 8px;
+  color: #e9603d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+/* Space at the bottom of every inner page. */
+.page-main {
+  padding-bottom: 90px;
+}
+
+
+/* ============================================================
+   3. NAVBAR (same on every page)
+   ============================================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 5%;
+  border-bottom: 1px solid #e4ebe6;
+  background-color: rgba(251, 247, 240, 0.95);
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f3d3e;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.navbar__logo-symbol {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #ff7a59;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 6px;
+}
+
+.navbar__link {
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #54666a;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar__link:hover {
+  background-color: #e6f1ec;
+  color: #0f3d3e;
+}
+
+/* The page you are on. Add this class to that page's link in the HTML. */
+.navbar__link--current,
+.navbar__link--current:hover {
+  background-color: #0f3d3e;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navbar__button {
+  padding: 11px 22px;
+  border-radius: 999px;
+  background-color: #ff7a59;
+  color: #082a2b;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.navbar__button:hover {
+  background-color: #e9603d;
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   4. BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15, 61, 62, 0.1);
+}
+
+.btn--primary {
+  background-color: #ff7a59;
+  color: #082a2b;
+}
+
+.btn--primary:hover {
+  background-color: #e9603d;
+}
+
+.btn--dark {
+  background-color: #0f3d3e;
+  color: #ffffff;
+}
+
+.btn--dark:hover {
+  background-color: #ff7a59;
+  color: #082a2b;
+}
+
+.btn--light {
+  background-color: #ffffff;
+  color: #0f3d3e;
+}
+
+.btn--light:hover {
+  background-color: #bfe5d3;
+}
+
+/* Small outlined button (Cancel, Remove, Mark as found). */
+.btn--outline {
+  padding: 9px 16px;
+  border: 1px solid #ff7a59;
+  background-color: #ffffff;
+  color: #b0432a;
+  font-size: 13px;
+}
+
+.btn--outline:hover {
+  background-color: #fbdccd;
+  box-shadow: none;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+
+/* ============================================================
+   5. PAGE HERO + STEPS (top of Share / Borrow / Lost / Found)
+   The photo for each page is set in that page's own CSS file.
+   ============================================================ */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: 84px 56px;
+  border-radius: 28px;
+  background-color: #0f3d3e;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 26px 54px rgba(15, 61, 62, 0.18);
+}
+
+/* Dark layer on top of the photo, and the content above that layer. */
+.page-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero h1 {
+  margin-bottom: 16px;
+  color: #ffffff;
+  font-size: 64px;
+}
+
+.page-hero h1 em {
+  color: #ff7a59;
+}
+
+.page-hero__text {
+  max-width: 520px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.page-hero__link {
+  display: inline-block;
+  margin-top: 24px;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #f2c14e;
+  color: #f2c14e;
+  font-weight: 600;
+}
+
+/* Three small steps under the hero. */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 26px 0 34px;
+  padding: 20px 28px;
+  border: 1px solid #e4ebe6;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 61, 62, 0.08);
+}
+
+.steps__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.steps__number {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #e6f1ec;
+  color: #0f3d3e;
+  font-weight: 700;
+}
+
+.steps__item strong {
+  display: block;
+  color: #1b2a2c;
+}
+
+.steps__item small {
+  color: #54666a;
+}
+
+
+/* ============================================================
+   6. PANELS + FORMS
+   ============================================================ */
+/* Form on the left (wide), help panel on the right (narrow). */
+.two-columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: start;
+  gap: 28px;
+}
+
+.panel {
+  padding: 34px;
+  border: 1px solid #e4ebe6;
+  border-radius: 28px;
+  background-color: #ffffff;
+  box-shadow: 0 14px 34px rgba(15, 61, 62, 0.1);
+}
+
+.panel__title {
+  margin-bottom: 6px;
+  font-size: 32px;
+}
+
+.panel__help {
+  margin-bottom: 26px;
+  color: #54666a;
+}
+
+.form-field {
+  margin-bottom: 22px;
+}
+
+/* Label above a box. Also used for the title above radio groups. */
+.form-field label,
+.form-field__title {
+  display: block;
+  margin-bottom: 8px;
+  color: #1b2a2c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #cddbd3;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1b2a2c;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:hover,
+input[type="search"]:hover,
+select:hover,
+textarea:hover {
+  border-color: #0f3d3e;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #0f3d3e;
+  outline: 3px solid #bfe5d3;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Radio buttons as small clickable pills. */
+.choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #cddbd3;
+  border-radius: 999px;
+  background-color: #fbf7f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.choice:hover {
+  border-color: #0f3d3e;
+  background-color: #e6f1ec;
+}
+
+.choice input {
+  margin: 0;
+  accent-color: #0f3d3e;
+}
+
+.form-note {
+  margin-top: 14px;
+  color: #54666a;
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   7. CARDS (Borrow items, shared items, Lost / Found reports)
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e4ebe6;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 61, 62, 0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 54px rgba(15, 61, 62, 0.18);
+}
+
+/* Picture area at the top of a card. */
+.card__art {
+  position: relative;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #bfe5d3;
+}
+
+.card__art--short {
+  height: 170px;
+}
+
+.card__art img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.card:hover .card__art img {
+  transform: scale(1.06);
+}
+
+.card__emoji {
+  font-size: 72px;
+}
+
+/* Category label on the picture. */
+.card__tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: rgba(15, 61, 62, 0.92);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* "SAMPLE" label on the example cards. */
+.card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #0f3d3e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+}
+
+.card__meta {
+  color: #e9603d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.card__body h3 {
+  font-size: 23px;
+}
+
+.card__body p {
+  color: #54666a;
+  font-size: 14px;
+}
+
+/* Pushes the owner row (and the button) to the bottom of the card. */
+.card__owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #e4ebe6;
+  color: #54666a;
+  font-size: 13px;
+}
+
+.card__link {
+  margin-top: 6px;
+  color: #e9603d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card__link:hover {
+  color: #0f3d3e;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #bfe5d3;
+  color: #0f3d3e;
+  font-weight: 700;
+}
+
+/* Soft picture color for each category (class = art--categoryname). */
+.card__art--books { background-color: #fbdccd; }
+.card__art--tools { background-color: #e4e9c7; }
+.card__art--sports { background-color: #d8e8f0; }
+.card__art--outdoors { background-color: #e5e0c6; }
+.card__art--games { background-color: #ecd9f1; }
+.card__art--home { background-color: #bfe5d3; }
+.card__art--tech { background-color: #d9e2ee; }
+.card__art--other { background-color: #e6f1ec; }
+.card__art--bottle { background-color: #d9e8f2; }
+.card__art--keys { background-color: #f6e6b8; }
+.card__art--bag { background-color: #fbdccd; }
+.card__art--clothing { background-color: #ecd9f1; }
+.card__art--electronics { background-color: #d9e2ee; }
+
+
+/* ============================================================
+   8. SECTIONS + LISTS
+   ============================================================ */
+.section {
+  margin-top: 40px;
+  padding: 34px;
+  border: 1px solid #e4ebe6;
+  border-radius: 28px;
+  background-color: #ffffff;
+  box-shadow: 0 14px 34px rgba(15, 61, 62, 0.1);
+}
+
+.section__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section__heading h2 {
+  font-size: 32px;
+}
+
+.count-label {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background-color: #bfe5d3;
+  color: #0f3d3e;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.request-list {
+  display: grid;
+  gap: 12px;
+}
+
+.request-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid #e4ebe6;
+  border-radius: 12px;
+  background-color: #fbf7f0;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.request-row:hover {
+  border-color: #ff7a59;
+  background-color: #ffffff;
+}
+
+.request-row__info {
+  flex: 1;
+}
+
+.request-row__info p {
+  color: #54666a;
+  font-size: 13px;
+}
+
+.empty-message {
+  padding: 22px;
+  border: 2px dashed #cddbd3;
+  border-radius: 12px;
+  color: #54666a;
+  text-align: center;
+}
+
+.empty-message--hidden {
+  display: none;
+}
+
+.empty-message a {
+  display: block;
+  margin-top: 8px;
+  color: #e9603d;
+  font-weight: 700;
+}
+
+/* Side help panel used on Lost / Found / Share. */
+.side-panel {
+  padding: 28px;
+  border-left: 5px solid #ff7a59;
+  border-radius: 18px;
+  background-color: #e6f1ec;
+}
+
+.side-panel h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.side-panel p {
+  color: #54666a;
+  font-size: 14px;
+}
+
+.checklist {
+  margin: 14px 0;
+  padding-left: 20px;
+  color: #54666a;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* ============================================================
+   9. FOOTER (same on every page)
+   ============================================================ */
+.footer {
+  padding: 48px 0 20px;
+  border-top: 4px solid #f2c14e;
+  background-color: #0f3d3e;
+  color: #fbf7f0;
+}
+
+.footer__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer__brand {
+  max-width: 340px;
+}
+
+.footer__logo {
+  color: #bfe5d3;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.footer__brand p {
+  margin: 8px 0;
+  color: #ff7a59;
+  font-weight: 600;
+}
+
+.footer__brand small {
+  color: #bfe5d3;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.footer__links strong {
+  margin-bottom: 4px;
+  color: #bfe5d3;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+}
+
+.footer__links a:hover,
+.footer__top:hover {
+  color: #ff7a59;
+}
+
+.footer__top {
+  color: #bfe5d3;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer__bottom {
+  margin-top: 34px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #bfe5d3;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+}
+
+
+/* ============================================================
+   10. TOAST (small message popup — script.js showMessage())
+   ============================================================ */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  max-width: calc(100% - 40px);
+  padding: 14px 22px;
+  border-radius: 12px;
+  background-color: #0f3d3e;
+  color: #ffffff;
+  box-shadow: 0 26px 54px rgba(15, 61, 62, 0.18);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Two copies of one animation: appear, stay, disappear (about 2.5 seconds). */
+.toast--show-a {
+  animation: toast-a 2.5s ease-out forwards;
+}
+
+.toast--show-b {
+  animation: toast-b 2.5s ease-out forwards;
+}
+
+@keyframes toast-a {
+  0% { opacity: 0; transform: translateY(12px); }
+  10% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+@keyframes toast-b {
+  0% { opacity: 0; transform: translateY(12px); }
+  10% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+
+/* ============================================================
+   11. ANIMATIONS (Section 09 — @keyframes)
+   To switch one off, delete its "animation:" line.
+   ============================================================ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-hero,
+.steps,
+.hero__content,
+.loop-card,
+.feature-card {
+  /* "backwards" = styled during the delay, so hover still works after. */
+  animation: fade-up 0.7s ease-out backwards;
+}
+
+.steps,
+.loop-card {
+  animation-delay: 0.15s;
+}
+
+/* People who prefer less movement get no animation. */
+@media (prefers-reduced-motion: reduce) {
+  *:not(.toast) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ============================================================
+   12. RESPONSIVE (Section 10 — media queries)
+   ============================================================ */
+
+/* >>> RESPONSIVE: tablet <<< */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar__links {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-hero {
+    padding: 60px 32px;
+  }
+
+  .page-hero h1 {
+    font-size: 48px;
+  }
+}
+
+/* >>> RESPONSIVE: phone <<< */
+@media (max-width: 600px) {
+  .navbar__link {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .navbar__button {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .page-hero {
+    padding: 44px 24px;
+  }
+
+  .page-hero h1 {
+    font-size: 38px;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panel,
+  .section {
+    padding: 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid,
+  .card-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .card__art {
+    height: 220px;
+  }
+
+  .section__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer__content {
+    flex-direction: column;
+  }
+}
+
+
+/* ============================================================
+   13. PREMIUM LAYER — "Neighbor Pass" card + polish
+   Idea: every card is a small PASS you hand to a neighbor.
+   - STAMP  (.card__tag)   = what kind of post it is (Borrow / Lost / Found)
+   - CHIPS  (.item-card__line) = the two facts you need: return plan + place
+   - RING   (.avatar)      = who is behind the post
+   Uses only notes concepts: position, transform, border, box-shadow.
+   ============================================================ */
+
+/* 13.1 Card shell: bigger corners, colored bottom edge under the picture */
+.card {
+  border: 0;
+  border-radius: 28px;
+  box-shadow: 0 14px 34px rgba(15, 61, 62, 0.1);
+}
+
+.card__art {
+  border-bottom: 5px solid #ff7a59;
+}
+
+/* 13.2 STAMP: slightly tilted label, color = type of post */
+.card__tag {
+  padding: 7px 14px;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  background-color: #0f3d3e;
+  box-shadow: 0 4px 14px rgba(15, 61, 62, 0.08);
+  transform: rotate(-3deg);
+}
+
+.card__tag--lost {
+  background-color: #ff7a59;
+  color: #082a2b;
+}
+
+.card__tag--found {
+  background-color: #bfe5d3;
+  color: #082a2b;
+}
+
+.card__tag--borrow {
+  background-color: #0f3d3e;
+}
+
+/* 13.3 CHIPS: return plan + place shown as small pills */
+.item-card__line {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: #e6f1ec;
+  color: #0f3d3e;
+}
+
+/* 13.4 RING around the neighbor's letter + dashed "pass" divider */
+.avatar {
+  border: 2px solid #ff7a59;
+  background-color: #fbf7f0;
+}
+
+.card__owner {
+  border-top: 2px dashed #cddbd3;
+}
+
+/* 13.5 Buttons + headings + navbar polish */
+.item-card__button,
+.report-card__button {
+  border-radius: 999px;
+}
+
+.section__heading h2 {
+  padding-bottom: 6px;
+  border-bottom: 4px solid #ff7a59;
+}
+
+.navbar {
+  box-shadow: 0 4px 14px rgba(15, 61, 62, 0.08);
+}
+
+.page-hero {
+  border: 3px solid #ffffff;
+}
+
+
+/* ============================================================
+   14. HELP CARDS + CTA BAND (bottom of Share / Borrow / Lost / Found)
+   Flexbox only (Section 06): cards share the row and wrap on small screens.
+   ============================================================ */
+
+/* 14.1 Help section: heading + row of 3 cards */
+.help {
+  margin-top: 40px;
+}
+
+.help__heading {
+  margin-bottom: 22px;
+}
+
+.help__heading h2 {
+  font-size: 32px;
+}
+
+.help__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* 14.2 Help card: same "Neighbor Pass" look (coral edge, dashed icon ring) */
+.help-card {
+  flex: 1 1 260px;
+  padding: 26px;
+  border-top: 5px solid #ff7a59;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 14px 34px rgba(15, 61, 62, 0.1);
+  transition: transform 0.25s;
+}
+
+.help-card:hover {
+  transform: translateY(-6px);
+}
+
+.help-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border: 2px dashed #ff7a59;
+  border-radius: 50%;
+  background-color: #fbf7f0;
+  font-size: 26px;
+}
+
+.help-card__title {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.help-card__text {
+  color: #54666a;
+  font-size: 14px;
+}
+
+/* 14.3 Call-to-action band: sends the visitor to the next useful page */
+.cta-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  padding: 34px 40px;
+  border-radius: 28px;
+  background-color: #0f3d3e;
+}
+
+.cta-band__content {
+  flex: 1 1 280px;
+}
+
+.cta-band__title {
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.cta-band__text {
+  margin-top: 6px;
+  color: #bfe5d3;
+}

@@ -1,0 +1,168 @@
+/* ==========================================================
+   SHARE PAGE STYLES (share.html) — loaded AFTER style.css.
+
+   FIND IT FAST:
+   1. .page-hero ......... photo behind the title
+   2. .preview ........... live preview card (right column)
+   3. .readiness ......... progress bar + checklist
+   4. .shared-card ....... "Items you've shared" cards
+   Colors, fonts, shadows use the values listed in style.css section 1.
+   ========================================================== */
+
+
+/* 1. HERO photo (dark layer on the left keeps the text readable) */
+.page-hero {
+  background-image: url("images/community-share.jpg");
+}
+
+.panel {
+  border-top: 5px solid #bfe5d3;
+}
+
+
+/* 2. LIVE PREVIEW */
+.preview {
+  padding: 26px;
+  border: 1px solid #e4ebe6;
+  border-radius: 28px;
+  background-color: #e6f1ec;
+}
+
+.preview__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.preview__heading h2 {
+  font-size: 28px;
+}
+
+.preview__live {
+  color: #e9603d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* The preview card should not jump when the mouse is over it. */
+.preview .card:hover {
+  transform: none;
+  box-shadow: 0 4px 14px rgba(15, 61, 62, 0.08);
+}
+
+.preview .card__art {
+  height: 190px;
+}
+
+
+/* 3. READINESS */
+.readiness {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid #e4ebe6;
+  border-radius: 18px;
+  background-color: #ffffff;
+}
+
+.readiness__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.readiness__top h3 {
+  font-size: 20px;
+}
+
+.readiness__top strong {
+  color: #e9603d;
+  font-size: 20px;
+}
+
+.readiness__bar {
+  height: 10px;
+  margin: 14px 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #e4ebe6;
+}
+
+/* JavaScript changes this width (0% to 100%). */
+.readiness__fill {
+  width: 0;
+  height: 100%;
+  background-color: #ff7a59;
+  transition: width 0.4s;
+}
+
+.readiness__list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #54666a;
+  font-size: 14px;
+}
+
+.readiness__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.readiness__mark {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #cddbd3;
+  border-radius: 50%;
+}
+
+/* JavaScript adds this class when a check is complete. */
+.readiness__item--done {
+  color: #0f3d3e;
+  font-weight: 600;
+}
+
+.readiness__item--done .readiness__mark {
+  border-color: #ff7a59;
+  background-color: #ff7a59;
+}
+
+.tips {
+  margin-top: 20px;
+}
+
+
+/* 4. ITEMS YOU'VE SHARED */
+.shared-card .card__art {
+  height: 190px;
+}
+
+.shared-card__facts {
+  display: grid;
+  gap: 4px;
+  margin: 6px 0;
+  color: #54666a;
+  font-size: 13px;
+}
+
+.shared-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #e4ebe6;
+  font-size: 13px;
+}
+
+.shared-card__owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

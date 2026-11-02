@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOOPIN | Home</title>
+
+  <!-- Fonts: Inter (body text) and Playfair Display (headings). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+  <!-- style.css = shared parts. home.css = only the Home page. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body id="top">
+
+  <!-- STEP 1: Navigation bar -->
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <span class="navbar__logo-symbol">↻</span>LOOPIN
+    </a>
+    <nav class="navbar__links">
+      <a class="navbar__link navbar__link--current" href="index.html">Home</a>
+      <a class="navbar__link" href="share.html">Share</a>
+      <a class="navbar__link" href="borrow.html">Borrow</a>
+      <a class="navbar__link" href="lost.html">Lost</a>
+      <a class="navbar__link" href="found.html">Found</a>
+    </nav>
+    <a class="navbar__button" href="share.html">Share an item ↗</a>
+  </header>
+
+  <main>
+    <!-- STEP 2: Hero — welcome message + the four actions -->
+    <section class="hero">
+      <!-- Dark layer above the photo keeps the text readable -->
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="section-label">Share · Borrow · Find</p>
+        <h1>Good things<br><em>go around.</em></h1>
+        <p class="hero__text">Borrow useful things nearby, share what you can, and help lost items find their way home — all in one neighborhood loop.</p>
+        <div class="hero__buttons">
+          <a class="btn btn--primary" href="borrow.html">Browse items →</a>
+          <a class="btn btn--light" href="#how-it-works">See how it works</a>
+        </div>
+        <p class="hero__count"><span id="ways-count">4</span> simple ways to make an impact</p>
+      </div>
+
+      <div class="loop-card">
+        <p class="loop-card__title">● The local sharing loop</p>
+        <div class="loop-card__center">
+          <span class="loop-card__symbol">↻</span>
+          <strong>GOOD THINGS<br>GO AROUND</strong>
+        </div>
+        <div class="loop-card__actions">
+          <a class="loop-card__stop" href="share.html"><span>↗</span>01 · Share</a>
+          <a class="loop-card__stop" href="borrow.html"><span>↙</span>02 · Borrow</a>
+          <a class="loop-card__stop" href="lost.html"><span>⌕</span>03 · Lost</a>
+          <a class="loop-card__stop" href="found.html"><span>✦</span>04 · Found</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Four feature cards (photo cards) -->
+    <section class="features container">
+      <p class="section-label">One community, many ways to help</p>
+      <h2>Four ways to make a difference.</h2>
+
+      <div class="features__cards">
+        <a class="feature-card" href="share.html">
+          <img src="images/optimized/share-card.jpg" alt="Rows of books on library shelves">
+          <div class="feature-card__content">
+            <span class="feature-card__label">Pass it along</span>
+            <h3>Share</h3>
+            <p>List useful things you’re happy to lend to someone nearby.</p>
+            <span class="feature-card__link">Add an item →</span>
+          </div>
+        </a>
+
+        <a class="feature-card" href="borrow.html">
+          <img src="images/optimized/borrow-card.jpg" alt="Hand tools arranged on a workshop wall">
+          <div class="feature-card__content">
+            <span class="feature-card__label">Borrow nearby</span>
+            <h3>Borrow</h3>
+            <p>Browse shared items and save a borrow request.</p>
+            <span class="feature-card__link">Browse items →</span>
+          </div>
+        </a>
+
+        <a class="feature-card" href="lost.html">
+          <img src="images/optimized/lost-card.jpg" alt="Keys and keychains collected together">
+          <div class="feature-card__content">
+            <span class="feature-card__label">Ask your neighbors</span>
+            <h3>Lost</h3>
+            <p>Tell the community what you lost and where you last saw it.</p>
+            <span class="feature-card__link">Report a lost item →</span>
+          </div>
+        </a>
+
+        <a class="feature-card" href="found.html">
+          <img src="images/optimized/found-card.jpg" alt="A small tracker held above an open hand">
+          <div class="feature-card__content">
+            <span class="feature-card__label">Help it get home</span>
+            <h3>Found</h3>
+            <p>Post an item you found and check for possible matches.</p>
+            <span class="feature-card__link">Report a found item →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- STEP 4: Neighborhood board with live search (home.js fills the cards) -->
+    <section class="board container">
+      <div class="board__heading">
+        <div>
+          <p class="section-label">Neighborhood board</p>
+          <h2>A little help, close to home.</h2>
+          <p class="board__text">Search every shared item, lost report and found post.</p>
+        </div>
+        <div class="board__counts">
+          <span class="board__counts-title">● Board snapshot</span>
+          <span><strong id="borrow-count">0</strong> borrow listings</span>
+          <span><strong id="lost-count">0</strong> lost reports</span>
+          <span><strong id="found-count">0</strong> found posts</span>
+        </div>
+      </div>
+
+      <div class="board__search">
+        <label for="board-search">Find something nearby</label>
+        <input id="board-search" type="search" placeholder="Try a book, bottle, or nearby place">
+        <div class="quick-filters">
+          <span class="quick-filters__label">Quick find</span>
+          <button class="quick-filters__button quick-filters__button--selected" type="button" value="">All</button>
+          <button class="quick-filters__button" type="button" value="books">Books</button>
+          <button class="quick-filters__button" type="button" value="tools">Tools</button>
+          <button class="quick-filters__button" type="button" value="indiranagar">Indiranagar</button>
+          <button class="quick-filters__button" type="button" value="cedar park">Cedar Park</button>
+        </div>
+      </div>
+
+      <div class="card-grid board__cards" id="board-cards"></div>
+      <p class="empty-message empty-message--hidden" id="no-results">
+        No posts match yet. Try another word or <a href="borrow.html">browse all items</a>.
+      </p>
+    </section>
+
+    <!-- STEP 5: How it works -->
+    <section class="how container" id="how-it-works">
+      <img class="how__image" src="images/home-hero2.jpg" alt="Neighbors in a community">
+      <div class="how__content">
+        <p class="section-label">Three simple steps</p>
+        <h2>It’s easy to <em>loop in.</em></h2>
+
+        <ol class="how__steps">
+          <li>
+            <span class="how__number">01</span>
+            <div>
+              <strong>Find or post nearby</strong>
+              <p>Browse shared items, or report something lost or found.</p>
+            </div>
+          </li>
+          <li>
+            <span class="how__number">02</span>
+            <div>
+              <strong>Save a request or report</strong>
+              <p>Check possible Lost and Found matches, or save a borrow request.</p>
+            </div>
+          </li>
+          <li>
+            <span class="how__number">03</span>
+            <div>
+              <strong>Keep the handoff safe</strong>
+              <p>Agree on pickup and return details. Keep one unique lost-item detail private.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="how__example">A neighbor shares a drill. Someone borrows it for a repair, then returns it for the next neighbor.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- STEP 6: Footer -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">↻ LOOPIN</a>
+        <p>Good things go around.</p>
+        <small>A neighborhood hub for sharing, borrowing, and helping lost things get home.</small>
+      </div>
+      <nav class="footer__links">
+        <strong>EXPLORE THE LOOP</strong>
+        <a href="share.html">Share an item</a>
+        <a href="borrow.html">Borrow nearby</a>
+        <a href="lost.html">Report something lost</a>
+        <a href="found.html">Post something found</a>
+      </nav>
+      <a class="footer__top" href="#top">↑ Back to top</a>
+    </div>
+    <p class="container footer__bottom">BUILT FOR GOOD THINGS GOING AROUND · HOME 01 / 05</p>
+  </footer>
+
+  <!-- Small popup message (script.js showMessage fills it) -->
+  <div class="toast" id="message-toast"></div>
+
+  <!-- Shared JavaScript first, then this page's JavaScript. -->
+  <script src="script.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

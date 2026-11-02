@@ -1,0 +1,100 @@
+/* ==========================================================
+   FOUND PAGE STYLES (found.html) — loaded AFTER style.css.
+
+   FIND IT FAST:
+   1. .page-hero ....... photo behind the title
+   2. .panel ........... mint top line on the form
+   3. .match-panel ..... possible-match helper box
+   4. .report-card ..... Found report cards drawn by found.js
+   Colors, fonts, shadows use the values listed in style.css section 1.
+   ========================================================== */
+
+
+/* 1. HERO photo */
+.page-hero {
+  background-image: url("images/community-found.jpg");
+}
+
+
+/* 2. FORM PANEL — mint line = "found" color */
+.panel {
+  border-top: 5px solid #bfe5d3;
+}
+
+
+/* 3. MATCH HELPER */
+.match-panel {
+  padding: 28px;
+  border-left: 5px solid #ff7a59;
+  border-radius: 18px;
+  background-color: #e6f1ec;
+}
+
+.match-panel h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.match-panel p {
+  color: #54666a;
+  font-size: 14px;
+}
+
+.match-panel__list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.match-panel__card,
+.match-panel__empty {
+  padding: 16px;
+  border: 1px solid #e4ebe6;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1b2a2c;
+  font-size: 14px;
+}
+
+.match-panel__card strong {
+  color: #0f3d3e;
+}
+
+.match-panel__card p {
+  margin-top: 6px;
+}
+
+.match-panel__note {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.match-panel__next {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.match-panel__next strong {
+  color: #0f3d3e;
+}
+
+
+/* 4. REPORT CARDS */
+.report-card .card__art {
+  height: 170px;
+}
+
+.report-card__details {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #e4ebe6;
+  color: #54666a;
+  font-size: 13px;
+}
+
+.report-card .btn {
+  align-self: flex-start;
+  margin-top: 6px;
+}

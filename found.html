@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOOPIN | Found</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+  <!-- style.css = shared parts. found.css = only the Found page. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="found.css">
+</head>
+<body id="top">
+
+  <!-- STEP 1: Navigation bar -->
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <span class="navbar__logo-symbol">↻</span>LOOPIN
+    </a>
+    <nav class="navbar__links">
+      <a class="navbar__link" href="index.html">Home</a>
+      <a class="navbar__link" href="share.html">Share</a>
+      <a class="navbar__link" href="borrow.html">Borrow</a>
+      <a class="navbar__link" href="lost.html">Lost</a>
+      <a class="navbar__link navbar__link--current" href="found.html">Found</a>
+    </nav>
+    <a class="navbar__button" href="share.html">Share an item ↗</a>
+  </header>
+
+  <main class="container page-main">
+    <!-- STEP 2: Hero -->
+    <section class="page-hero">
+      <!-- Dark layer above the photo keeps the text readable -->
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <p class="section-label">A good deed, one post away</p>
+        <h1>Found<br><em>something?</em></h1>
+        <p class="page-hero__text">Post what you found so its owner has a better chance of seeing it.</p>
+        <a class="page-hero__link" href="lost.html">Search lost reports →</a>
+      </div>
+    </section>
+
+    <!-- STEP 3: Three steps -->
+    <section class="steps">
+      <div class="steps__item">
+        <span class="steps__number">01</span>
+        <div><strong>Describe what you found</strong><small>Item type and visible details</small></div>
+      </div>
+      <div class="steps__item">
+        <span class="steps__number">02</span>
+        <div><strong>Add where and when</strong><small>Use a nearby public place</small></div>
+      </div>
+      <div class="steps__item">
+        <span class="steps__number">03</span>
+        <div><strong>Check possible matches</strong><small>Compare with Lost reports</small></div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Report form (left) + match helper (right) -->
+    <div class="two-columns">
+      <section class="panel">
+        <p class="section-label">Help it get home</p>
+        <h2 class="panel__title">Report a found item</h2>
+        <p class="panel__help">Don’t include every identifying detail. The owner can confirm them.</p>
+
+        <form id="found-form">
+          <div class="form-field">
+            <label for="found-name">Item name</label>
+            <input id="found-name" type="text" maxlength="55" placeholder="e.g. Blue water bottle" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="found-category">Item type</label>
+              <select id="found-category" required>
+                <option value="">Choose one</option>
+                <option>Bottle</option>
+                <option>Keys</option>
+                <option>Bag</option>
+                <option>Books</option>
+                <option>Clothing</option>
+                <option>Electronics</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="found-date">When did you find it?</label>
+              <select id="found-date">
+                <option>Today</option>
+                <option>Yesterday</option>
+                <option>Earlier this week</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="found-location">Where did you find it?</label>
+            <input id="found-location" type="text" maxlength="45" placeholder="A nearby area or landmark" required>
+          </div>
+
+          <div class="form-field">
+            <label for="found-description">Extra details</label>
+            <textarea id="found-description" maxlength="220" placeholder="Share a few details that may help the owner" required></textarea>
+          </div>
+
+          <button class="btn btn--dark btn--full" type="button" id="found-submit">Post found report →</button>
+          <p class="form-note">Keep one special detail private. It can help confirm who the item belongs to.</p>
+        </form>
+      </section>
+
+      <aside class="match-panel">
+        <p class="section-label">LOOPIN match helper</p>
+        <h2>Could these belong together?</h2>
+        <p>We compare item type, name, description, and location to find possible matches.</p>
+
+        <!-- found.js fills this box with match cards -->
+        <div class="match-panel__list" id="match-suggestions"></div>
+
+        <p class="match-panel__note">These are suggestions from a simple word and category check — not AI. Review the details yourself before deciding they match.</p>
+
+        <div class="match-panel__next">
+          <strong>If someone claims it</strong>
+          <ul class="checklist">
+            <li>Meet in a public place.</li>
+            <li>Ask them to describe one private detail.</li>
+            <li>Hand it over only when it feels safe.</li>
+            <li>When the owner takes it, press “Returned to owner” to remove the report.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- STEP 5: Saved Found reports (found.js draws the cards) -->
+    <section class="section">
+      <div class="section__heading">
+        <div>
+          <p class="section-label">Community board</p>
+          <h2>Found item reports</h2>
+        </div>
+        <span class="count-label" id="found-count">0 reports</span>
+      </div>
+      <div class="card-grid card-grid--two" id="found-reports"></div>
+      <p class="empty-message" id="empty-found">No found reports yet. Add one above to help an item find its owner.</p>
+    </section>
+    <!-- STEP 6: Helpful guide (3 cards) -->
+    <section class="help">
+      <div class="help__heading">
+        <p class="section-label">Do it the safe way</p>
+        <h2>A safe handover, step by step</h2>
+      </div>
+      <div class="help__cards">
+        <article class="help-card">
+          <span class="help-card__icon">🧾</span>
+          <h3 class="help-card__title">Post clear details, not everything</h3>
+          <p class="help-card__text">Share the type and place. Keep one detail back for the owner to confirm.</p>
+        </article>
+        <article class="help-card">
+          <span class="help-card__icon">🙋</span>
+          <h3 class="help-card__title">Ask for a private detail</h3>
+          <p class="help-card__text">When someone claims it, ask them to describe the part you kept private.</p>
+        </article>
+        <article class="help-card">
+          <span class="help-card__icon">🏪</span>
+          <h3 class="help-card__title">Meet in a public place</h3>
+          <p class="help-card__text">Hand it over at a busy spot such as a shop, gate or bus stop.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- STEP 7: Call to action -->
+    <section class="cta-band">
+      <div class="cta-band__content">
+        <h2 class="cta-band__title">Lost something yourself?</h2>
+        <p class="cta-band__text">Tell your neighbors what you lost and where.</p>
+      </div>
+      <a class="btn btn--primary" href="lost.html">Report a lost item →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">↻ LOOPIN</a>
+        <p>Good things go around.</p>
+        <small>A neighborhood hub for sharing, borrowing, and helping lost things get home.</small>
+      </div>
+      <nav class="footer__links">
+        <strong>EXPLORE THE LOOP</strong>
+        <a href="share.html">Share an item</a>
+        <a href="borrow.html">Borrow nearby</a>
+        <a href="lost.html">Report something lost</a>
+        <a href="found.html">Post something found</a>
+      </nav>
+      <a class="footer__top" href="#top">↑ Back to top</a>
+    </div>
+    <p class="container footer__bottom">BUILT FOR GOOD THINGS GOING AROUND · FOUND 05 / 05</p>
+  </footer>
+
+  <div class="toast" id="message-toast"></div>
+
+  <script src="script.js"></script>
+  <script src="found.js"></script>
+</body>
+</html>

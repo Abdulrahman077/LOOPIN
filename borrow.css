@@ -1,0 +1,52 @@
+/* ==========================================================
+   BORROW PAGE STYLES (borrow.html) — loaded AFTER style.css.
+
+   FIND IT FAST:
+   1. .page-hero ....... photo behind the title
+   2. .browse .......... search box, category filter, results text
+   3. .item-card ....... item cards drawn by borrow.js
+   Colors, fonts, shadows use the values listed in style.css section 1.
+   ========================================================== */
+
+
+/* 1. HERO photo */
+.page-hero {
+  background-image: url("images/community-borrow.jpg");
+}
+
+
+/* 2. SEARCH + FILTER */
+.browse__controls {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 16px;
+}
+
+.browse__results {
+  margin-bottom: 20px;
+  color: #54666a;
+  font-size: 14px;
+}
+
+
+/* 3. ITEM CARDS */
+.item-card__line {
+  color: #54666a;
+  font-size: 13px;
+}
+
+.item-card .card__body {
+  padding: 20px;
+}
+
+/* Space between the owner row and the button. */
+.item-card .btn {
+  margin-top: 12px;
+}
+
+/* >>> RESPONSIVE: phone <<< */
+@media (max-width: 600px) {
+  .browse__controls {
+    grid-template-columns: 1fr;
+  }
+}

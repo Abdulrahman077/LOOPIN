@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOOPIN | Share</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+  <!-- style.css = shared parts. share.css = only the Share page. -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="share.css">
+</head>
+<body id="top">
+
+  <!-- STEP 1: Navigation bar -->
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <span class="navbar__logo-symbol">↻</span>LOOPIN
+    </a>
+    <nav class="navbar__links">
+      <a class="navbar__link" href="index.html">Home</a>
+      <a class="navbar__link navbar__link--current" href="share.html">Share</a>
+      <a class="navbar__link" href="borrow.html">Borrow</a>
+      <a class="navbar__link" href="lost.html">Lost</a>
+      <a class="navbar__link" href="found.html">Found</a>
+    </nav>
+    <a class="navbar__button" href="share.html">Share an item ↗</a>
+  </header>
+
+  <main class="container page-main">
+    <!-- STEP 2: Hero -->
+    <section class="page-hero">
+      <!-- Dark layer above the photo keeps the text readable -->
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <p class="section-label">Good things, passed on</p>
+        <h1>Share it<br><em>forward.</em></h1>
+        <p class="page-hero__text">Offer something useful to someone nearby. A few clear details help a neighbor borrow with confidence.</p>
+        <a class="page-hero__link" href="borrow.html">See what neighbors have shared →</a>
+      </div>
+    </section>
+
+    <!-- STEP 3: Three steps -->
+    <section class="steps">
+      <div class="steps__item">
+        <span class="steps__number">01</span>
+        <div><strong>Describe your item</strong><small>Set clear expectations</small></div>
+      </div>
+      <div class="steps__item">
+        <span class="steps__number">02</span>
+        <div><strong>Choose a pickup area</strong><small>Keep the handoff local</small></div>
+      </div>
+      <div class="steps__item">
+        <span class="steps__number">03</span>
+        <div><strong>Help a neighbor</strong><small>Good things go around</small></div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Form (left) + live preview (right) -->
+    <div class="two-columns">
+      <section class="panel">
+        <p class="section-label">The listing desk</p>
+        <h2 class="panel__title">Create a listing</h2>
+        <p class="panel__help">A few honest details help the right neighbor find your item.</p>
+
+        <form id="share-form">
+          <div class="form-field">
+            <label for="item-name">Item name</label>
+            <input id="item-name" type="text" maxlength="55" placeholder="e.g. Folding camping chair" required>
+          </div>
+
+          <div class="form-field">
+            <p class="form-field__title">Category</p>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="category" value="Books" required> Books</label>
+              <label class="choice"><input type="radio" name="category" value="Tools"> Tools</label>
+              <label class="choice"><input type="radio" name="category" value="Sports"> Sports</label>
+              <label class="choice"><input type="radio" name="category" value="Outdoors"> Outdoors</label>
+              <label class="choice"><input type="radio" name="category" value="Games"> Games</label>
+              <label class="choice"><input type="radio" name="category" value="Home"> Home</label>
+              <label class="choice"><input type="radio" name="category" value="Tech"> Tech</label>
+              <label class="choice"><input type="radio" name="category" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <p class="form-field__title">Condition</p>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="condition" value="Like new" required> Like new</label>
+              <label class="choice"><input type="radio" name="condition" value="Great"> Great</label>
+              <label class="choice"><input type="radio" name="condition" value="Good"> Good</label>
+              <label class="choice"><input type="radio" name="condition" value="Well loved"> Well loved</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="item-description">Description</label>
+            <textarea id="item-description" maxlength="220" placeholder="What should a borrower know?" required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="item-location">Pickup area</label>
+            <input id="item-location" type="text" maxlength="40" placeholder="e.g. Indiranagar" required>
+          </div>
+
+          <div class="form-field">
+            <p class="form-field__title">Availability</p>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="availability" value="Today"> Today</label>
+              <label class="choice"><input type="radio" name="availability" value="This week"> This week</label>
+              <label class="choice"><input type="radio" name="availability" value="Weekends"> Weekends</label>
+              <label class="choice"><input type="radio" name="availability" value="Evenings"> Evenings</label>
+              <label class="choice"><input type="radio" name="availability" value="Next week"> Next week</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <p class="form-field__title">Expected return</p>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="loanPeriod" value="1 day" required> 1 day</label>
+              <label class="choice"><input type="radio" name="loanPeriod" value="3 days"> 3 days</label>
+              <label class="choice"><input type="radio" name="loanPeriod" value="1 week"> 1 week</label>
+              <label class="choice"><input type="radio" name="loanPeriod" value="2 weeks"> 2 weeks</label>
+              <label class="choice"><input type="radio" name="loanPeriod" value="By agreement"> By agreement</label>
+            </div>
+          </div>
+
+          <button class="btn btn--dark btn--full" type="button" id="share-submit">Add my item →</button>
+          <p class="form-note">⌖ Pickup areas stay general. Agree on exact handoff details privately.</p>
+        </form>
+      </section>
+
+      <aside class="preview">
+        <div class="preview__heading">
+          <div>
+            <p class="section-label">A neighbor’s view</p>
+            <h2>Your listing, in context.</h2>
+          </div>
+          <span class="preview__live">● LIVE</span>
+        </div>
+
+        <!-- This card changes while the visitor types (share.js updatePreview). -->
+        <article class="card">
+          <div class="card__art card__art--other" id="preview-art">
+            <span class="card__emoji" id="preview-emoji">📦</span>
+            <span class="card__tag" id="preview-category">Choose category</span>
+          </div>
+          <div class="card__body">
+            <p class="card__meta" id="preview-condition">Choose condition</p>
+            <h3 id="preview-title">Something useful</h3>
+            <p id="preview-description">Add a short, honest note so a neighbor knows what to expect.</p>
+            <p>⌖ <strong id="preview-location">Pickup area</strong></p>
+            <p>◷ <strong id="preview-availability">Available soon</strong></p>
+            <p>↺ <strong id="preview-return">Return window</strong></p>
+            <div class="card__owner">
+              <span class="avatar">Y</span>
+              Shared by <strong>You</strong>
+            </div>
+          </div>
+        </article>
+
+        <div class="readiness">
+          <div class="readiness__top">
+            <h3>Listing readiness</h3>
+            <strong id="readiness-percent">0%</strong>
+          </div>
+          <div class="readiness__bar"><div class="readiness__fill" id="readiness-fill"></div></div>
+          <ul class="readiness__list">
+            <li class="readiness__item" id="check-details"><span class="readiness__mark"></span>Name and category</li>
+            <li class="readiness__item" id="check-condition"><span class="readiness__mark"></span>Condition</li>
+            <li class="readiness__item" id="check-description"><span class="readiness__mark"></span>Helpful description</li>
+            <li class="readiness__item" id="check-handoff"><span class="readiness__mark"></span>Pickup and return plan</li>
+          </ul>
+        </div>
+
+        <div class="side-panel tips">
+          <p class="section-label">Neighbor to neighbor</p>
+          <h2>Tips for a great share</h2>
+          <ul class="checklist">
+            <li>Be honest about the condition</li>
+            <li>Meet in a public spot</li>
+            <li>Quick replies help items find a home</li>
+          </ul>
+          <p><strong id="active-count">8</strong> active listings on the neighborhood board</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- STEP 5: Items this visitor has shared -->
+    <section class="section">
+      <div class="section__heading">
+        <div>
+          <p class="section-label">Your contribution</p>
+          <h2>Items you’ve shared</h2>
+        </div>
+        <span class="count-label" id="my-item-count">0 items</span>
+      </div>
+      <div class="card-grid card-grid--two" id="my-items"></div>
+      <p class="empty-message" id="empty-items">
+        <strong>Your loop starts here.</strong> Share your first item and help a neighbor find something useful.
+        <a href="#item-name">Add your first item ↗</a>
+      </p>
+    </section>
+    <!-- STEP 6: Helpful guide (3 cards) -->
+    <section class="help">
+      <div class="help__heading">
+        <p class="section-label">Ideas to get started</p>
+        <h2>What can I share?</h2>
+      </div>
+      <div class="help__cards">
+        <article class="help-card">
+          <span class="help-card__icon">📚</span>
+          <h3 class="help-card__title">Things you rarely use</h3>
+          <p class="help-card__text">Books, tools and games often sit idle at home. A neighbor may need them this week.</p>
+        </article>
+        <article class="help-card">
+          <span class="help-card__icon">✍️</span>
+          <h3 class="help-card__title">Write a clear description</h3>
+          <p class="help-card__text">Mention size, condition and anything missing so nobody is surprised.</p>
+        </article>
+        <article class="help-card">
+          <span class="help-card__icon">↩️</span>
+          <h3 class="help-card__title">Set a fair return time</h3>
+          <p class="help-card__text">Pick 1 day, 3 days, 1 week or by agreement. A clear plan means fewer reminders.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- STEP 7: Call to action -->
+    <section class="cta-band">
+      <div class="cta-band__content">
+        <h2 class="cta-band__title">Curious what neighbors are sharing?</h2>
+        <p class="cta-band__text">See every item on the neighborhood shelf.</p>
+      </div>
+      <a class="btn btn--primary" href="borrow.html">Browse items →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">↻ LOOPIN</a>
+        <p>Good things go around.</p>
+        <small>A neighborhood hub for sharing, borrowing, and helping lost things get home.</small>
+      </div>
+      <nav class="footer__links">
+        <strong>EXPLORE THE LOOP</strong>
+        <a href="share.html">Share an item</a>
+        <a href="borrow.html">Borrow nearby</a>
+        <a href="lost.html">Report something lost</a>
+        <a href="found.html">Post something found</a>
+      </nav>
+      <a class="footer__top" href="#top">↑ Back to top</a>
+    </div>
+    <p class="container footer__bottom">BUILT FOR GOOD THINGS GOING AROUND · SHARE 02 / 05</p>
+  </footer>
+
+  <div class="toast" id="message-toast"></div>
+
+  <script src="script.js"></script>
+  <script src="share.js"></script>
+</body>
+</html>
